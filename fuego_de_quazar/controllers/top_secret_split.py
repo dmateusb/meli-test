@@ -1,19 +1,19 @@
 from fuego_de_quazar.enums.StatusCode import StatusCode
 from flask import request
 from fuego_de_quazar.helpers.http_handler import HttpHandler
-from fuego_de_quazar.helpers.rebel_satellite import RebelSatellite
+from fuego_de_quazar.helpers.millenium_falcon_finder import MilleniumFalconFinder
 from fuego_de_quazar.helpers.math_calculator import MathCalculator
 from fuego_de_quazar.helpers.file_manager import FileManager
-from fuego_de_quazar.interfaces.finder import Finder
 
 
 class TopSecretSplit:
 
-    def __init__(self, falcon_finder) -> None:
-
-        self.__falcon_finder: Finder = falcon_finder(RebelSatellite,
-            MathCalculator(), HttpHandler(), FileManager())
+    def __init__(self) -> None:
         self.__data_handler = HttpHandler()
+        self.__math_calculator = MathCalculator()
+        self.__file_manager = FileManager()
+        self.__falcon_finder = MilleniumFalconFinder(self.__math_calculator,
+            self.__data_handler, self.__file_manager)
 
     def post(self, satellite_name):
         self.__falcon_finder.handle_data(satellite_name)

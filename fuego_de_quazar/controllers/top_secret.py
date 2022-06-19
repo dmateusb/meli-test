@@ -1,18 +1,18 @@
 from flask import request
+from pyparsing import makeHTMLTags
 from fuego_de_quazar.enums.StatusCode import StatusCode
+from fuego_de_quazar.helpers.millenium_falcon_finder import MilleniumFalconFinder
 from fuego_de_quazar.helpers.http_handler import HttpHandler
 from fuego_de_quazar.helpers.math_calculator import MathCalculator
-from fuego_de_quazar.helpers.rebel_satellite import RebelSatellite
-from fuego_de_quazar.interfaces.finder import Finder
 
 
 class TopSecret:
 
-    def __init__(self, falcon_finder) -> None:
-
-        self.__falcon_finder: Finder = falcon_finder(RebelSatellite, 
-                        MathCalculator(), HttpHandler())
+    def __init__(self) -> None:
+        self.__math_calculator = MathCalculator()
         self.__data_handler = HttpHandler()
+        self.__falcon_finder = MilleniumFalconFinder(
+            self.__math_calculator, self.__data_handler)
 
     def post(self):
 

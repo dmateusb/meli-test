@@ -2,6 +2,8 @@ from cmath import exp
 from typing import List, Text, Tuple, Dict
 from fuego_de_quazar.enums.StatusCode import StatusCode
 from fuego_de_quazar.interfaces.finder import Finder
+from fuego_de_quazar.helpers.rebel_satellite import RebelSatellite
+
 
 class MilleniumFalconFinder(Finder):
 
@@ -10,7 +12,7 @@ class MilleniumFalconFinder(Finder):
         rebel1 = self.__satellites[0]
         rebel2 = self.__satellites[1]
 
-        self.rebel12_distance = self.__calculator.calculate_distance(
+        self.__rebel12_distance = self.__calculator.calculate_distance(
             rebel1.get_coordinates(), 
             rebel2.get_coordinates()
         )
@@ -122,7 +124,7 @@ class MilleniumFalconFinder(Finder):
             distances[0],
             distances[1],
             distances[2],
-            self.rebel12_distance
+            self.__rebel12_distance
         )
         return points
 
@@ -135,9 +137,9 @@ class MilleniumFalconFinder(Finder):
         if (self.__file_manager) and self.__file_manager.load():
             return self.__file_manager.load()
 
-        rebel1 = self.__rebel_satellite("kenobi", (-500, -200))
-        rebel2 = self.__rebel_satellite("skywalker", (100, -100))
-        rebel3 = self.__rebel_satellite("sato", (500, 100))
+        rebel1 = RebelSatellite("kenobi", (-500, -200))
+        rebel2 = RebelSatellite("skywalker", (100, -100))
+        rebel3 = RebelSatellite("sato", (500, 100))
 
         return [rebel1, rebel2, rebel3]
 
@@ -153,13 +155,11 @@ class MilleniumFalconFinder(Finder):
 
     def __init__(
         self,
-        rebel_satellite,
         calculator,
         data_handler,
         file_manager=None) -> None:
 
-        self.__rebel_satellite = rebel_satellite
         self.__calculator = calculator
         self.__data_handler = data_handler
         self.__file_manager = file_manager
-        self.__satellites = self.__get_satellites_list()
+        self.__satellites: List[RebelSatellite] = self.__get_satellites_list()
