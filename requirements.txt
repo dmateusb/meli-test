@@ -1,0 +1,5 @@
+fastapi==0.78.0
+Flask==2.1.2
+regex==2022.3.2
+requests==2.22.0
+setuptools==45.2.0

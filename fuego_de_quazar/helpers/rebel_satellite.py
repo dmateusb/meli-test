@@ -1,6 +1,8 @@
 from typing import List, Text, Tuple
 
+
 class RebelSatellite():
+
 
     def get_coordinates(self):
         return self.__coordinates
