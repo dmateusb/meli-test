@@ -1,10 +1,10 @@
-from enums.StatusCode import StatusCode
+from fuego_de_quazar.enums.StatusCode import StatusCode
 from flask import request
-from helpers.http_handler import HttpHandler
-from helpers.rebel_satellite import RebelSatellite
-from helpers.math_calculator import MathCalculator
-from helpers.file_manager import FileManager
-from interfaces.finder import Finder
+from fuego_de_quazar.helpers.http_handler import HttpHandler
+from fuego_de_quazar.helpers.rebel_satellite import RebelSatellite
+from fuego_de_quazar.helpers.math_calculator import MathCalculator
+from fuego_de_quazar.helpers.file_manager import FileManager
+from fuego_de_quazar.interfaces.finder import Finder
 
 
 class TopSecretSplit:

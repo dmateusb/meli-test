@@ -1,7 +1,7 @@
 from flask import Flask
 app = Flask(__name__)
 
-import views
+import fuego_de_quazar.views
 
 if __name__ == "__main__":
-    app.run(host='0.0.0.0')
+    app.run(debug=True)

@@ -1,7 +1,7 @@
 from cmath import exp
 from typing import List, Text, Tuple, Dict
-from enums.StatusCode import StatusCode
-from interfaces.finder import Finder
+from fuego_de_quazar.enums.StatusCode import StatusCode
+from fuego_de_quazar.interfaces.finder import Finder
 
 class MilleniumFalconFinder(Finder):
 
