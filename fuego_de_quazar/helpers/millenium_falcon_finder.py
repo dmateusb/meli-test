@@ -7,6 +7,9 @@ from fuego_de_quazar.helpers.rebel_satellite import RebelSatellite
 
 class MilleniumFalconFinder(Finder):
 
+    # Recibe las distancias y calcula la posicion
+    # segun los datos guardados en la lista de satelites
+
     def get_location(self, distances: List[float]) -> Tuple[float, float]:
 
         rebel1 = self.__satellites[0]
@@ -19,6 +22,9 @@ class MilleniumFalconFinder(Finder):
 
         return self.__calculate_position(distances)
 
+    # Recibe los mensajes y calcula el texto
+    # segun los datos guardados en la lista de satelites
+
     def get_message(self, messages: List[List[Text]]) -> Text:
 
         self.__satellites[0].set_message(messages[0])
@@ -27,6 +33,8 @@ class MilleniumFalconFinder(Finder):
 
         return self.__sync_messages()
 
+    # Recibe el json con toda la informacion y obtiene 
+    # la ubicación y el mensaje
 
     def find(self, satellites_data: List[Dict]) -> Dict:
 
@@ -45,6 +53,8 @@ class MilleniumFalconFinder(Finder):
 
         return self.__generate_response(points, message)
 
+    # Registra la información de los satelites
+
     def handle_data(self, satellite_name: Text) -> None:
 
         distance = self.__data_handler.get_json_param('distance')
@@ -53,6 +63,9 @@ class MilleniumFalconFinder(Finder):
         satellite.set_falcon_distance(distance)
         satellite.set_message(message)
         self.__file_manager.save(self.__satellites)
+
+    # Busca la informacion entre todos los satelites
+    # Si estos cuentan con toda la informacion requerida
 
     def split_find(self) -> Dict:
 
@@ -91,6 +104,9 @@ class MilleniumFalconFinder(Finder):
 
         func = lambda x: x.get_name() == name 
         return list( filter(func, self.__satellites) )[0]
+
+    # Obtiene el mensaje de buscando la informacion entre
+    # todos los satelites
         
     def __sync_messages(self):
 
@@ -109,6 +125,9 @@ class MilleniumFalconFinder(Finder):
             final_message.append(messages[j][i])
 
         return " ".join(final_message)
+
+    # Reune la informacion e invoca el modulo calculador
+    # de los puntos en comun
 
     def __calculate_position(self, distances: List[float]):
 
@@ -130,6 +149,9 @@ class MilleniumFalconFinder(Finder):
     def __get_satellite_field(self, satellites, field):
 
         return [satellite[field] for satellite in satellites]
+
+    # Carga la informacion de los satelites de previos request
+    # o los inicializa si no encuentra informacion almacenada
 
     def __get_satellites_list(self):
 
