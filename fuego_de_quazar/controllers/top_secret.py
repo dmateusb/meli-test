@@ -1,9 +1,9 @@
 from flask import request
-from fuego_de_quazar.enums.StatusCode import StatusCode
-from fuego_de_quazar.helpers.http_handler import HttpHandler
-from fuego_de_quazar.helpers.math_calculator import MathCalculator
-from fuego_de_quazar.helpers.rebel_satellite import RebelSatellite
-from fuego_de_quazar.interfaces.finder import Finder
+from enums.StatusCode import StatusCode
+from helpers.http_handler import HttpHandler
+from helpers.math_calculator import MathCalculator
+from helpers.rebel_satellite import RebelSatellite
+from interfaces.finder import Finder
 
 
 class TopSecret:

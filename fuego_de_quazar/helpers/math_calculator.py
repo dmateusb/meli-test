@@ -1,6 +1,6 @@
 import re
 from typing import Tuple
-from fuego_de_quazar.helpers.http_handler import HttpHandler
+from helpers.http_handler import HttpHandler
 import math
 
 

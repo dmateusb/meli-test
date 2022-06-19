@@ -1,9 +1,8 @@
-from fuego_de_quazar.controllers.top_secret import TopSecret
-from fuego_de_quazar.controllers.top_secret_split import TopSecretSplit
+from controllers.top_secret import TopSecret
+from controllers.top_secret_split import TopSecretSplit
 from flask import Flask
-from fuego_de_quazar import app
-from fuego_de_quazar.helpers.millenium_falcon_finder import MilleniumFalconFinder
-
+from helpers.millenium_falcon_finder import MilleniumFalconFinder
+from app import app
 
 @app.route("/topsecret", methods = ["POST"])
 def top_secret_post():
