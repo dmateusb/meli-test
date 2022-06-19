@@ -70,7 +70,6 @@ class MilleniumFalconFinder(Finder):
                 )    
                 
 
-            self.__file_manager.save(None)
             return self.__generate_response(points, message)
 
     def __extract_distances(self):
