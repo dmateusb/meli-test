@@ -1,5 +1,4 @@
 from fuego_de_quazar.enums.StatusCode import StatusCode
-from flask import request
 from fuego_de_quazar.helpers.http_handler import HttpHandler
 from fuego_de_quazar.helpers.millenium_falcon_finder import MilleniumFalconFinder
 from fuego_de_quazar.helpers.math_calculator import MathCalculator
